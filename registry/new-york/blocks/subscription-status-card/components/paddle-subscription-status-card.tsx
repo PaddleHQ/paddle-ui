@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { mapSubscriptionToStatusData } from "../lib/subscription-status-card-utils"
+import { mapSubscriptionToStatusData } from "@/registry/new-york/blocks/subscription-status-card/lib/subscription-status-card-utils"
 import {
   SubscriptionStatusCard,
   type SubscriptionStatusCardProps,

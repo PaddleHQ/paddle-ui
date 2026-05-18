@@ -8,7 +8,7 @@ import {
   DrawerTitle,
 } from "@/registry/new-york/ui/drawer"
 import { Skeleton } from "@/registry/new-york/ui/skeleton"
-import { useCheckoutDrawer } from "../hooks/use-checkout-drawer"
+import { useCheckoutDrawer } from "@/registry/new-york/blocks/express-checkout/hooks/use-checkout-drawer"
 import type {
   OpenCheckoutOptions,
   CheckoutCustomer,

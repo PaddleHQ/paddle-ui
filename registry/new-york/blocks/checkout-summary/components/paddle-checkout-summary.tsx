@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { mapCheckoutEventsToSummary } from "../lib/checkout-summary-utils"
+import { mapCheckoutEventsToSummary } from "@/registry/new-york/blocks/checkout-summary/lib/checkout-summary-utils"
 import { CheckoutSummary, type CheckoutSummaryProps } from "./checkout-summary"
 
 type CheckoutEventsInput = Parameters<typeof mapCheckoutEventsToSummary>[0]

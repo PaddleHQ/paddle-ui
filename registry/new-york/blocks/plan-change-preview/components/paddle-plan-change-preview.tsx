@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { mapPreviewToPlanChangeData } from "../lib/plan-change-preview-utils"
+import { mapPreviewToPlanChangeData } from "@/registry/new-york/blocks/plan-change-preview/lib/plan-change-preview-utils"
 import { PlanChangePreview, type PlanChangePreviewProps } from "./plan-change-preview"
 
 type PaddleSubscription = Parameters<typeof mapPreviewToPlanChangeData>[0]

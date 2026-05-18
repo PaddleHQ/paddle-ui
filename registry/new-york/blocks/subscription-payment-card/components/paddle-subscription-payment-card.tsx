@@ -5,7 +5,7 @@ import {
   mapSubscriptionToNextPayment,
   mapTransactionToPaymentMethod,
   getUpdatePaymentMethodUrl,
-} from "../lib/subscription-payment-card-utils"
+} from "@/registry/new-york/blocks/subscription-payment-card/lib/subscription-payment-card-utils"
 import {
   SubscriptionPaymentCard,
   type SubscriptionPaymentCardProps,
