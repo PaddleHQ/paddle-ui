@@ -5,7 +5,12 @@
   "title": "Checkout summary",
   "description": "Order summary for inline checkout: line items, totals, recurring/trial info, and refund policy link. Compliance-ready display for Paddle inline checkout.",
   "dependencies": [],
-  "registryDependencies": ["@paddle/paddle-helpers", "card", "separator", "skeleton"],
+  "registryDependencies": [
+    "@paddle/paddle-helpers",
+    "card",
+    "separator",
+    "skeleton"
+  ],
   "files": [
     {
       "path": "registry/new-york/blocks/checkout-summary/components/checkout-summary.tsx",
@@ -14,7 +19,7 @@
     },
     {
       "path": "registry/new-york/blocks/checkout-summary/components/paddle-checkout-summary.tsx",
-      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { mapCheckoutEventsToSummary } from \"../lib/checkout-summary-utils\"\nimport { CheckoutSummary, type CheckoutSummaryProps } from \"./checkout-summary\"\n\ntype CheckoutEventsInput = Parameters<typeof mapCheckoutEventsToSummary>[0]\n\nexport type PaddleCheckoutSummaryProps = {\n  /**\n   * Raw `CheckoutEventsData` from a Paddle.js checkout event callback\n   * (e.g. `checkout.loaded`, `checkout.updated`).\n   */\n  checkoutData?: CheckoutEventsInput\n} & Omit<CheckoutSummaryProps, \"summary\">\n\n/**\n * Paddle-aware wrapper for `CheckoutSummary`.\n *\n * Accepts raw `CheckoutEventsData` from Paddle.js checkout event callbacks,\n * maps it to `CheckoutSummaryData`, and renders the order summary UI.\n *\n * Pass `undefined` to render the skeleton loading state.\n *\n * @example\n * const [checkoutData, setCheckoutData] = useState<CheckoutEventsData>()\n *\n * <PaddleCheckoutSummary\n *   checkoutData={checkoutData}\n *   policyUrl=\"/legal/refunds\"\n * />\n */\nexport function PaddleCheckoutSummary({ checkoutData, ...uiProps }: PaddleCheckoutSummaryProps) {\n  const summary = checkoutData ? mapCheckoutEventsToSummary(checkoutData) : undefined\n  return <CheckoutSummary summary={summary} {...uiProps} />\n}\n",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { mapCheckoutEventsToSummary } from \"@/registry/new-york/blocks/checkout-summary/lib/checkout-summary-utils\"\nimport { CheckoutSummary, type CheckoutSummaryProps } from \"./checkout-summary\"\n\ntype CheckoutEventsInput = Parameters<typeof mapCheckoutEventsToSummary>[0]\n\nexport type PaddleCheckoutSummaryProps = {\n  /**\n   * Raw `CheckoutEventsData` from a Paddle.js checkout event callback\n   * (e.g. `checkout.loaded`, `checkout.updated`).\n   */\n  checkoutData?: CheckoutEventsInput\n} & Omit<CheckoutSummaryProps, \"summary\">\n\n/**\n * Paddle-aware wrapper for `CheckoutSummary`.\n *\n * Accepts raw `CheckoutEventsData` from Paddle.js checkout event callbacks,\n * maps it to `CheckoutSummaryData`, and renders the order summary UI.\n *\n * Pass `undefined` to render the skeleton loading state.\n *\n * @example\n * const [checkoutData, setCheckoutData] = useState<CheckoutEventsData>()\n *\n * <PaddleCheckoutSummary\n *   checkoutData={checkoutData}\n *   policyUrl=\"/legal/refunds\"\n * />\n */\nexport function PaddleCheckoutSummary({ checkoutData, ...uiProps }: PaddleCheckoutSummaryProps) {\n  const summary = checkoutData ? mapCheckoutEventsToSummary(checkoutData) : undefined\n  return <CheckoutSummary summary={summary} {...uiProps} />\n}\n",
       "type": "registry:component"
     },
     {
@@ -23,5 +28,7 @@
       "type": "registry:lib"
     }
   ],
-  "categories": ["checkout"]
+  "categories": [
+    "checkout"
+  ]
 }

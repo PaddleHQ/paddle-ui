@@ -51,10 +51,6 @@
           "type": "registry:lib"
         },
         {
-          "path": "registry/new-york/blocks/paddle-client/lib/paddle-types.ts",
-          "type": "registry:lib"
-        },
-        {
           "path": "registry/new-york/blocks/paddle-client/lib/hooks/use-paddle-prices.tsx",
           "type": "registry:hook"
         },

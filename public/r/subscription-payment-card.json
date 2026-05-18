@@ -4,8 +4,15 @@
   "type": "registry:component",
   "title": "Subscription payment card",
   "description": "Payment method and next billing summary card. Auto-resolves payment method display labels from Paddle type/brand/last4 fields. Shows next payment amount, date, and portal link to update payment details.",
-  "dependencies": ["lucide-react"],
-  "registryDependencies": ["@paddle/paddle-helpers", "card", "skeleton", "separator"],
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "@paddle/paddle-helpers",
+    "card",
+    "skeleton",
+    "separator"
+  ],
   "files": [
     {
       "path": "registry/new-york/blocks/subscription-payment-card/components/subscription-payment-card.tsx",
@@ -14,7 +21,7 @@
     },
     {
       "path": "registry/new-york/blocks/subscription-payment-card/components/paddle-subscription-payment-card.tsx",
-      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport {\n  mapSubscriptionToNextPayment,\n  mapTransactionToPaymentMethod,\n  getUpdatePaymentMethodUrl,\n} from \"../lib/subscription-payment-card-utils\"\nimport {\n  SubscriptionPaymentCard,\n  type SubscriptionPaymentCardProps,\n} from \"./subscription-payment-card\"\n\ntype SubscriptionInput = Parameters<typeof mapSubscriptionToNextPayment>[0]\ntype NextTransactionInput = Parameters<typeof mapSubscriptionToNextPayment>[1]\n\nexport type PaddleSubscriptionPaymentCardProps = {\n  /** Paddle Subscription */\n  subscription: SubscriptionInput\n  /**\n   * `next_transaction` include from the subscription fetch.\n   * Required for accurate next-bill amount. Fetch with:\n   * `paddle.subscriptions.get(id, { include: [\"next_transaction\"] })`\n   */\n  nextTransaction?: NextTransactionInput\n  /**\n   * Most recent completed transaction for the subscription.\n   * Used to determine the stored payment method. Fetch with:\n   * `paddle.transactions.list({ subscriptionId, status: [\"completed\"], perPage: 1 })`\n   */\n  lastTransaction?: NextTransactionInput\n} & Omit<SubscriptionPaymentCardProps, \"nextPayment\" | \"paymentMethod\" | \"updatePaymentMethodUrl\">\n\n/**\n * Paddle-aware wrapper for `SubscriptionPaymentCard`.\n *\n * Accepts raw Paddle subscription and transaction entities, maps them to\n * `NextPaymentData` and `PaymentMethodData`, and renders the UI component.\n *\n * @example\n * <PaddleSubscriptionPaymentCard\n *   subscription={subscription}\n *   nextTransaction={subscription.nextTransaction}\n *   lastTransaction={transactions.data[0]}\n * />\n */\nexport function PaddleSubscriptionPaymentCard({\n  subscription,\n  nextTransaction,\n  lastTransaction,\n  ...uiProps\n}: PaddleSubscriptionPaymentCardProps) {\n  const nextPayment = mapSubscriptionToNextPayment(subscription, nextTransaction)\n  const paymentMethod = mapTransactionToPaymentMethod(lastTransaction)\n  const updatePaymentMethodUrl = getUpdatePaymentMethodUrl(subscription)\n\n  return (\n    <SubscriptionPaymentCard\n      nextPayment={nextPayment}\n      paymentMethod={paymentMethod}\n      updatePaymentMethodUrl={updatePaymentMethodUrl}\n      {...uiProps}\n    />\n  )\n}\n",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport {\n  mapSubscriptionToNextPayment,\n  mapTransactionToPaymentMethod,\n  getUpdatePaymentMethodUrl,\n} from \"@/registry/new-york/blocks/subscription-payment-card/lib/subscription-payment-card-utils\"\nimport {\n  SubscriptionPaymentCard,\n  type SubscriptionPaymentCardProps,\n} from \"./subscription-payment-card\"\n\ntype SubscriptionInput = Parameters<typeof mapSubscriptionToNextPayment>[0]\ntype NextTransactionInput = Parameters<typeof mapSubscriptionToNextPayment>[1]\n\nexport type PaddleSubscriptionPaymentCardProps = {\n  /** Paddle Subscription */\n  subscription: SubscriptionInput\n  /**\n   * `next_transaction` include from the subscription fetch.\n   * Required for accurate next-bill amount. Fetch with:\n   * `paddle.subscriptions.get(id, { include: [\"next_transaction\"] })`\n   */\n  nextTransaction?: NextTransactionInput\n  /**\n   * Most recent completed transaction for the subscription.\n   * Used to determine the stored payment method. Fetch with:\n   * `paddle.transactions.list({ subscriptionId, status: [\"completed\"], perPage: 1 })`\n   */\n  lastTransaction?: NextTransactionInput\n} & Omit<SubscriptionPaymentCardProps, \"nextPayment\" | \"paymentMethod\" | \"updatePaymentMethodUrl\">\n\n/**\n * Paddle-aware wrapper for `SubscriptionPaymentCard`.\n *\n * Accepts raw Paddle subscription and transaction entities, maps them to\n * `NextPaymentData` and `PaymentMethodData`, and renders the UI component.\n *\n * @example\n * <PaddleSubscriptionPaymentCard\n *   subscription={subscription}\n *   nextTransaction={subscription.nextTransaction}\n *   lastTransaction={transactions.data[0]}\n * />\n */\nexport function PaddleSubscriptionPaymentCard({\n  subscription,\n  nextTransaction,\n  lastTransaction,\n  ...uiProps\n}: PaddleSubscriptionPaymentCardProps) {\n  const nextPayment = mapSubscriptionToNextPayment(subscription, nextTransaction)\n  const paymentMethod = mapTransactionToPaymentMethod(lastTransaction)\n  const updatePaymentMethodUrl = getUpdatePaymentMethodUrl(subscription)\n\n  return (\n    <SubscriptionPaymentCard\n      nextPayment={nextPayment}\n      paymentMethod={paymentMethod}\n      updatePaymentMethodUrl={updatePaymentMethodUrl}\n      {...uiProps}\n    />\n  )\n}\n",
       "type": "registry:component"
     },
     {
@@ -23,5 +30,7 @@
       "type": "registry:lib"
     }
   ],
-  "categories": ["subscription"]
+  "categories": [
+    "subscription"
+  ]
 }

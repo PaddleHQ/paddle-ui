@@ -4,7 +4,9 @@
   "type": "registry:component",
   "title": "Plan change preview",
   "description": "Compact plan change summary card with side-by-side plan comparison, proration breakdown, upgrade/downgrade badge, discount, scheduled change warning, and optional confirm/cancel actions. Decision-support view for plan change flows.",
-  "dependencies": ["lucide-react"],
+  "dependencies": [
+    "lucide-react"
+  ],
   "registryDependencies": [
     "@paddle/paddle-helpers",
     "card",
@@ -21,7 +23,7 @@
     },
     {
       "path": "registry/new-york/blocks/plan-change-preview/components/paddle-plan-change-preview.tsx",
-      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { mapPreviewToPlanChangeData } from \"../lib/plan-change-preview-utils\"\nimport { PlanChangePreview, type PlanChangePreviewProps } from \"./plan-change-preview\"\n\ntype PaddleSubscription = Parameters<typeof mapPreviewToPlanChangeData>[0]\ntype PreviewResponse = Parameters<typeof mapPreviewToPlanChangeData>[1]\ntype PaddleDiscount = Parameters<typeof mapPreviewToPlanChangeData>[2]\n\nexport type PaddlePlanChangePreviewProps = {\n  /** Current Paddle Subscription (before the change) */\n  subscription: PaddleSubscription\n  /** Subscription update preview response with the proposed changes */\n  previewResponse: PreviewResponse\n  /** Paddle Discount for enriched discount display */\n  discount?: PaddleDiscount\n} & Omit<PlanChangePreviewProps, \"preview\">\n\n/**\n * Paddle-aware wrapper for `PlanChangePreview`.\n *\n * Accepts the current subscription entity and the Paddle preview update response,\n * maps them to `PlanChangePreviewData`, and renders the UI component.\n *\n * Pass `prorationBillingMode` through to control which billing row and label\n * the component displays.\n *\n * `subscription.items[].price.unit_price` must be present for the current plan\n * price to display correctly — fetch with full price details, not a list response.\n *\n * @example\n * <PaddlePlanChangePreview\n *   subscription={subscription}\n *   previewResponse={previewResponse}\n *   discount={discount}\n *   prorationBillingMode=\"prorated_immediately\"\n * />\n */\nexport function PaddlePlanChangePreview({\n  subscription,\n  previewResponse,\n  discount,\n  ...uiProps\n}: PaddlePlanChangePreviewProps) {\n  const preview = mapPreviewToPlanChangeData(subscription, previewResponse, discount)\n  return <PlanChangePreview preview={preview} {...uiProps} />\n}\n",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { mapPreviewToPlanChangeData } from \"@/registry/new-york/blocks/plan-change-preview/lib/plan-change-preview-utils\"\nimport { PlanChangePreview, type PlanChangePreviewProps } from \"./plan-change-preview\"\n\ntype PaddleSubscription = Parameters<typeof mapPreviewToPlanChangeData>[0]\ntype PreviewResponse = Parameters<typeof mapPreviewToPlanChangeData>[1]\ntype PaddleDiscount = Parameters<typeof mapPreviewToPlanChangeData>[2]\n\nexport type PaddlePlanChangePreviewProps = {\n  /** Current Paddle Subscription (before the change) */\n  subscription: PaddleSubscription\n  /** Subscription update preview response with the proposed changes */\n  previewResponse: PreviewResponse\n  /** Paddle Discount for enriched discount display */\n  discount?: PaddleDiscount\n} & Omit<PlanChangePreviewProps, \"preview\">\n\n/**\n * Paddle-aware wrapper for `PlanChangePreview`.\n *\n * Accepts the current subscription entity and the Paddle preview update response,\n * maps them to `PlanChangePreviewData`, and renders the UI component.\n *\n * Pass `prorationBillingMode` through to control which billing row and label\n * the component displays.\n *\n * `subscription.items[].price.unit_price` must be present for the current plan\n * price to display correctly — fetch with full price details, not a list response.\n *\n * @example\n * <PaddlePlanChangePreview\n *   subscription={subscription}\n *   previewResponse={previewResponse}\n *   discount={discount}\n *   prorationBillingMode=\"prorated_immediately\"\n * />\n */\nexport function PaddlePlanChangePreview({\n  subscription,\n  previewResponse,\n  discount,\n  ...uiProps\n}: PaddlePlanChangePreviewProps) {\n  const preview = mapPreviewToPlanChangeData(subscription, previewResponse, discount)\n  return <PlanChangePreview preview={preview} {...uiProps} />\n}\n",
       "type": "registry:component"
     },
     {
@@ -44,5 +46,7 @@
       "warning-foreground": "oklch(0.94 0.034 82)"
     }
   },
-  "categories": ["subscription"]
+  "categories": [
+    "subscription"
+  ]
 }

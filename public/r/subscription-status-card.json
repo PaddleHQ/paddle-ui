@@ -4,7 +4,9 @@
   "type": "registry:component",
   "title": "Subscription status card",
   "description": "Subscription overview card showing plan details, status, billing cycle, line item breakdown, discount, scheduled changes, and optional action buttons. Supports single and multi-item subscriptions, past-due alerts, collection mode indicators, and configurable badge position.",
-  "dependencies": ["lucide-react"],
+  "dependencies": [
+    "lucide-react"
+  ],
   "registryDependencies": [
     "@paddle/paddle-helpers",
     "card",
@@ -22,7 +24,7 @@
     },
     {
       "path": "registry/new-york/blocks/subscription-status-card/components/paddle-subscription-status-card.tsx",
-      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { mapSubscriptionToStatusData } from \"../lib/subscription-status-card-utils\"\nimport {\n  SubscriptionStatusCard,\n  type SubscriptionStatusCardProps,\n} from \"./subscription-status-card\"\n\ntype PaddleSubscription = Parameters<typeof mapSubscriptionToStatusData>[0]\ntype RecurringTransactionDetails = Parameters<typeof mapSubscriptionToStatusData>[1]\ntype PaddleDiscount = Parameters<typeof mapSubscriptionToStatusData>[2]\n\nexport type PaddleSubscriptionStatusCardProps = {\n  subscription: PaddleSubscription\n  recurringTransactionDetails: RecurringTransactionDetails\n  discount?: PaddleDiscount\n} & Omit<SubscriptionStatusCardProps, \"subscription\">\n\n/**\n * Paddle-aware wrapper for `SubscriptionStatusCard`.\n *\n * Accepts the raw Paddle subscription entity and `recurringTransactionDetails`\n * (from `GET /subscriptions/{id}?include=recurring_transaction_details`),\n * maps them to `SubscriptionStatusData`, and renders the UI component.\n *\n * Optionally pass a Paddle `Discount` to\n * enrich the discount display with a code and derived description label.\n *\n * All display-only props (`onChangePlan`, `onManageSubscription`, etc.) are\n * passed through directly.\n *\n * @example\n * <PaddleSubscriptionStatusCard\n *   subscription={subscription}\n *   recurringTransactionDetails={subscription.recurringTransactionDetails}\n *   onChangePlan={() => setShowPlanChange(true)}\n * />\n */\nexport function PaddleSubscriptionStatusCard({\n  subscription,\n  recurringTransactionDetails,\n  discount,\n  ...uiProps\n}: PaddleSubscriptionStatusCardProps) {\n  const data = mapSubscriptionToStatusData(subscription, recurringTransactionDetails, discount)\n  return <SubscriptionStatusCard subscription={data} {...uiProps} />\n}\n",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { mapSubscriptionToStatusData } from \"@/registry/new-york/blocks/subscription-status-card/lib/subscription-status-card-utils\"\nimport {\n  SubscriptionStatusCard,\n  type SubscriptionStatusCardProps,\n} from \"./subscription-status-card\"\n\ntype PaddleSubscription = Parameters<typeof mapSubscriptionToStatusData>[0]\ntype RecurringTransactionDetails = Parameters<typeof mapSubscriptionToStatusData>[1]\ntype PaddleDiscount = Parameters<typeof mapSubscriptionToStatusData>[2]\n\nexport type PaddleSubscriptionStatusCardProps = {\n  subscription: PaddleSubscription\n  recurringTransactionDetails: RecurringTransactionDetails\n  discount?: PaddleDiscount\n} & Omit<SubscriptionStatusCardProps, \"subscription\">\n\n/**\n * Paddle-aware wrapper for `SubscriptionStatusCard`.\n *\n * Accepts the raw Paddle subscription entity and `recurringTransactionDetails`\n * (from `GET /subscriptions/{id}?include=recurring_transaction_details`),\n * maps them to `SubscriptionStatusData`, and renders the UI component.\n *\n * Optionally pass a Paddle `Discount` to\n * enrich the discount display with a code and derived description label.\n *\n * All display-only props (`onChangePlan`, `onManageSubscription`, etc.) are\n * passed through directly.\n *\n * @example\n * <PaddleSubscriptionStatusCard\n *   subscription={subscription}\n *   recurringTransactionDetails={subscription.recurringTransactionDetails}\n *   onChangePlan={() => setShowPlanChange(true)}\n * />\n */\nexport function PaddleSubscriptionStatusCard({\n  subscription,\n  recurringTransactionDetails,\n  discount,\n  ...uiProps\n}: PaddleSubscriptionStatusCardProps) {\n  const data = mapSubscriptionToStatusData(subscription, recurringTransactionDetails, discount)\n  return <SubscriptionStatusCard subscription={data} {...uiProps} />\n}\n",
       "type": "registry:component"
     },
     {
@@ -49,5 +51,7 @@
       "info-foreground": "oklch(0.92 0.042 252)"
     }
   },
-  "categories": ["subscription"]
+  "categories": [
+    "subscription"
+  ]
 }
