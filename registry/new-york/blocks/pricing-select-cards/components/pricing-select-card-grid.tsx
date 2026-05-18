@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import * as RadioGroupPrimitive from "@radix-ui/react-radio-group"
+import { RadioGroup as RadioGroupPrimitive } from "radix-ui"
 import { Card, CardContent, CardHeader, CardTitle } from "@/registry/new-york/ui/card"
 import { Badge } from "@/registry/new-york/ui/badge"
 import { Skeleton } from "@/registry/new-york/ui/skeleton"
