@@ -2,9 +2,16 @@
 
 import { type Environments, type Theme, type Paddle } from "@paddle/paddle-js"
 import { useEffect, useState, useCallback, useRef } from "react"
-import { CheckoutEventNames } from "../paddle-types"
-import type { CheckoutCompleteData, OpenCheckoutOptions, CheckoutSettings } from "../paddle-types"
-import { getOrCreatePaddle, addPaddleEventListener } from "../paddle-instance"
+import {
+  CheckoutEventNames,
+  type OpenCheckoutOptions,
+  type CheckoutSettings,
+} from "@/registry/new-york/blocks/paddle-client/lib/paddle-sdk-types"
+import type { CheckoutCompleteData } from "@/registry/new-york/blocks/paddle-helpers/lib/paddle-types"
+import {
+  getOrCreatePaddle,
+  addPaddleEventListener,
+} from "@/registry/new-york/blocks/paddle-client/lib/paddle-instance"
 
 export type UseCheckoutArgs = {
   clientToken: string
