@@ -54,7 +54,7 @@ export function PricingSelectCardGrid({
     <RadioGroupPrimitive.Item value={priceId} disabled={isCurrent} asChild>
       <Card
         className={cn(
-          "relative flex cursor-pointer flex-col items-center justify-center rounded-lg border p-5 shadow-none transition-all hover:shadow-md",
+          "relative flex cursor-pointer flex-col items-center justify-center overflow-visible rounded-lg border p-5 shadow-none transition-all hover:shadow-md",
           "data-[state=checked]:border-2 data-[state=checked]:border-primary data-[state=checked]:bg-primary/5",
           isCurrent && "cursor-default border-muted bg-muted/30 hover:shadow-none",
           className
