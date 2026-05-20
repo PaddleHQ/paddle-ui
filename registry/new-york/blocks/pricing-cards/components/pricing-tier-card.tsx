@@ -109,7 +109,7 @@ export function PricingTierCard({
       data-selected={isSelected || undefined}
       data-current={isCurrent || undefined}
       className={cn(
-        "relative flex flex-col h-full transition-all",
+        "relative flex flex-col h-full overflow-visible transition-all",
         isSelected && "border-primary ring-1 ring-primary",
         isCurrent && "border-muted bg-muted/30",
         className

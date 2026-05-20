@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { mapPreviewToBreakdownData } from "../lib/plan-change-breakdown-utils"
+import { mapPreviewToBreakdownData } from "@/registry/new-york/blocks/plan-change-breakdown/lib/plan-change-breakdown-utils"
 import { PlanChangeBreakdown, type PlanChangeBreakdownProps } from "./plan-change-breakdown"
 
 type BreakdownPreviewResponse = Parameters<typeof mapPreviewToBreakdownData>[0]

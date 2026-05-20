@@ -2,14 +2,15 @@
  * Formats an ISO 8601 date string as a locale-aware date string.
  *
  * @param isoString - ISO 8601 date string (e.g. "2024-01-15T00:00:00Z")
- * @param locale - Optional BCP 47 locale tag (e.g. "en-US"). Defaults to browser/system locale.
+ * @param locale - Optional BCP 47 locale tag (e.g. "en-GB"). Defaults to "en-US" so SSR
+ *   and client produce identical output (required for React hydration).
  * @returns Formatted date string, e.g. "Jan 15, 2024"
  *
  * @example
  * formatDate("2024-01-15T00:00:00Z") // "Jan 15, 2024"
  * formatDate("2024-01-15T00:00:00Z", "en-GB") // "15 Jan 2024"
  */
-export function formatDate(isoString: string, locale?: string): string {
+export function formatDate(isoString: string, locale: string = "en-US"): string {
   return new Intl.DateTimeFormat(locale, {
     year: "numeric",
     month: "short",
@@ -63,14 +64,19 @@ export function formatTrialPeriod(trialPeriod: TimePeriodLike): string {
  *
  * @param amount - Raw numeric amount (e.g. from Paddle checkout event totals)
  * @param currencyCode - ISO 4217 currency code (e.g. "USD", "GBP")
- * @param locale - Optional BCP 47 locale tag (e.g. "en-US"). Defaults to browser/system locale.
+ * @param locale - Optional BCP 47 locale tag (e.g. "en-GB"). Defaults to "en-US" so SSR
+ *   and client produce identical output (required for React hydration).
  * @returns Formatted currency string, e.g. "$29.99" or "£12.00"
  *
  * @example
  * formatMoney(29.99, "USD") // "$29.99"
  * formatMoney(12, "GBP", "en-GB") // "£12.00"
  */
-export function formatMoney(amount: number, currencyCode: string, locale?: string): string {
+export function formatMoney(
+  amount: number,
+  currencyCode: string,
+  locale: string = "en-US"
+): string {
   return new Intl.NumberFormat(locale, {
     style: "currency",
     currency: currencyCode,

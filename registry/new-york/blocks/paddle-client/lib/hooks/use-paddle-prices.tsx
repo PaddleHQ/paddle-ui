@@ -11,8 +11,8 @@ import {
   formatBillingCycle,
   formatTrialPeriod,
 } from "@/registry/new-york/blocks/paddle-helpers/lib/paddle-format"
-import { getOrCreatePaddle } from "../paddle-instance"
-import type { PriceData } from "../paddle-types"
+import { getOrCreatePaddle } from "@/registry/new-york/blocks/paddle-client/lib/paddle-instance"
+import type { PriceData } from "@/registry/new-york/blocks/paddle-helpers/lib/paddle-types"
 
 export type UsePaddlePricesArgs = {
   clientToken: string

@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import * as RadioGroupPrimitive from "@radix-ui/react-radio-group"
+import { RadioGroup as RadioGroupPrimitive } from "radix-ui"
 import { Card, CardHeader, CardTitle } from "@/registry/new-york/ui/card"
 import { Badge } from "@/registry/new-york/ui/badge"
 import { Skeleton } from "@/registry/new-york/ui/skeleton"
@@ -56,7 +56,7 @@ export function PricingSelectCardStacked({
     <RadioGroupPrimitive.Item value={priceId} disabled={isCurrent} asChild>
       <Card
         className={cn(
-          "relative flex cursor-pointer flex-col rounded-lg border p-6 shadow-sm transition-all hover:shadow-md",
+          "relative flex cursor-pointer flex-col overflow-visible rounded-lg border p-6 shadow-sm transition-all hover:shadow-md",
           "data-[state=checked]:border-2 data-[state=checked]:border-primary data-[state=checked]:bg-primary/5",
           isCurrent && "cursor-default border-muted bg-muted/30 hover:shadow-sm",
           className

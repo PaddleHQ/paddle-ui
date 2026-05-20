@@ -12,10 +12,12 @@ import {
   type CheckoutCustomer,
   type CheckoutEventsData,
   type PaddleEventData,
-  type CheckoutCompleteData,
-  type CheckoutSummaryData,
   type CheckoutOpenLineItem,
-} from "@/registry/new-york/blocks/paddle-client/lib/paddle-types"
+} from "@/registry/new-york/blocks/paddle-client/lib/paddle-sdk-types"
+import type {
+  CheckoutCompleteData,
+  CheckoutSummaryData,
+} from "@/registry/new-york/blocks/paddle-helpers/lib/paddle-types"
 
 const INLINE_CHECKOUT_FRAME_TARGET = "paddle-inline-checkout-frame"
 

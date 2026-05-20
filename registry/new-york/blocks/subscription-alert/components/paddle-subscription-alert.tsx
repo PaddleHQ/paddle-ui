@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { mapSubscriptionToAlertData } from "../lib/subscription-alert-utils"
+import { mapSubscriptionToAlertData } from "@/registry/new-york/blocks/subscription-alert/lib/subscription-alert-utils"
 import { SubscriptionAlert, type SubscriptionAlertProps } from "./subscription-alert"
 
 type PaddleSubscription = Parameters<typeof mapSubscriptionToAlertData>[0]

@@ -4,8 +4,16 @@
   "type": "registry:component",
   "title": "Plan change breakdown",
   "description": "Detailed financial breakdown of a subscription plan change. Invoice-style view with per-transaction line items, proration periods, tax, credits, and totals for immediate, next, and recurring billing. Financial-transparency view complementing the compact plan-change-preview.",
-  "dependencies": ["lucide-react"],
-  "registryDependencies": ["@paddle/paddle-helpers", "card", "badge", "skeleton", "separator"],
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "@paddle/paddle-helpers",
+    "card",
+    "badge",
+    "skeleton",
+    "separator"
+  ],
   "files": [
     {
       "path": "registry/new-york/blocks/plan-change-breakdown/components/plan-change-breakdown.tsx",
@@ -14,7 +22,7 @@
     },
     {
       "path": "registry/new-york/blocks/plan-change-breakdown/components/paddle-plan-change-breakdown.tsx",
-      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { mapPreviewToBreakdownData } from \"../lib/plan-change-breakdown-utils\"\nimport { PlanChangeBreakdown, type PlanChangeBreakdownProps } from \"./plan-change-breakdown\"\n\ntype BreakdownPreviewResponse = Parameters<typeof mapPreviewToBreakdownData>[0]\n\nexport type PaddlePlanChangeBreakdownProps = {\n  /** Subscription update preview response with the proposed changes */\n  previewResponse: BreakdownPreviewResponse\n} & Omit<PlanChangeBreakdownProps, \"breakdown\">\n\n/**\n * Paddle-aware wrapper for `PlanChangeBreakdown`.\n *\n * Accepts the response from the Paddle preview update endpoint, maps it to\n * `PlanChangeBreakdownData`, and renders the detailed financial breakdown UI.\n *\n * Pass `collectionMode` from the subscription to control billing terminology\n * (e.g. \"Invoice created\" vs \"Charged today\").\n *\n * @example\n * <PaddlePlanChangeBreakdown\n *   previewResponse={previewResponse}\n *   prorationBillingMode=\"prorated_immediately\"\n *   collectionMode={subscription.collectionMode}\n * />\n */\nexport function PaddlePlanChangeBreakdown({\n  previewResponse,\n  ...uiProps\n}: PaddlePlanChangeBreakdownProps) {\n  const breakdown = mapPreviewToBreakdownData(previewResponse)\n  return <PlanChangeBreakdown breakdown={breakdown} {...uiProps} />\n}\n",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { mapPreviewToBreakdownData } from \"@/registry/new-york/blocks/plan-change-breakdown/lib/plan-change-breakdown-utils\"\nimport { PlanChangeBreakdown, type PlanChangeBreakdownProps } from \"./plan-change-breakdown\"\n\ntype BreakdownPreviewResponse = Parameters<typeof mapPreviewToBreakdownData>[0]\n\nexport type PaddlePlanChangeBreakdownProps = {\n  /** Subscription update preview response with the proposed changes */\n  previewResponse: BreakdownPreviewResponse\n} & Omit<PlanChangeBreakdownProps, \"breakdown\">\n\n/**\n * Paddle-aware wrapper for `PlanChangeBreakdown`.\n *\n * Accepts the response from the Paddle preview update endpoint, maps it to\n * `PlanChangeBreakdownData`, and renders the detailed financial breakdown UI.\n *\n * Pass `collectionMode` from the subscription to control billing terminology\n * (e.g. \"Invoice created\" vs \"Charged today\").\n *\n * @example\n * <PaddlePlanChangeBreakdown\n *   previewResponse={previewResponse}\n *   prorationBillingMode=\"prorated_immediately\"\n *   collectionMode={subscription.collectionMode}\n * />\n */\nexport function PaddlePlanChangeBreakdown({\n  previewResponse,\n  ...uiProps\n}: PaddlePlanChangeBreakdownProps) {\n  const breakdown = mapPreviewToBreakdownData(previewResponse)\n  return <PlanChangeBreakdown breakdown={breakdown} {...uiProps} />\n}\n",
       "type": "registry:component"
     },
     {
@@ -33,5 +41,7 @@
       "success-foreground": "oklch(0.92 0.042 154)"
     }
   },
-  "categories": ["subscription"]
+  "categories": [
+    "subscription"
+  ]
 }

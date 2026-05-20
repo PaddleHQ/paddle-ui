@@ -5,7 +5,10 @@
   "title": "Billing interval toggle",
   "description": "Segmented control for switching between billing intervals. Renders labels automatically from interval keys (month -> Monthly, year -> Annually). Designed for pricing pages and plan selectors.",
   "dependencies": [],
-  "registryDependencies": ["@paddle/paddle-helpers", "tabs"],
+  "registryDependencies": [
+    "@paddle/paddle-helpers",
+    "tabs"
+  ],
   "files": [
     {
       "path": "registry/new-york/blocks/billing-interval-toggle/components/billing-interval-toggle.tsx",
@@ -13,5 +16,7 @@
       "type": "registry:component"
     }
   ],
-  "categories": ["pricing"]
+  "categories": [
+    "pricing"
+  ]
 }

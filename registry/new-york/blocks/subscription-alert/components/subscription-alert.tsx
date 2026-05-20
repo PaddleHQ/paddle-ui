@@ -5,8 +5,10 @@ import { AlertCircle, Info, TriangleAlert, X } from "lucide-react"
 import { Alert, AlertDescription } from "@/registry/new-york/ui/alert"
 import { cn } from "@/lib/utils"
 import type { SubscriptionAlertData } from "@/registry/new-york/blocks/paddle-helpers/lib/paddle-types"
-import { deriveSubscriptionAlert } from "../lib/subscription-alert-utils"
-import type { AlertVariant } from "../lib/subscription-alert-utils"
+import {
+  deriveSubscriptionAlert,
+  type AlertVariant,
+} from "@/registry/new-york/blocks/subscription-alert/lib/subscription-alert-utils"
 
 /** Props for the `SubscriptionAlert` component. */
 export type SubscriptionAlertProps = {

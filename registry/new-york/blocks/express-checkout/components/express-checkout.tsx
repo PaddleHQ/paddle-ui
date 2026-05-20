@@ -8,10 +8,10 @@ import { usePaddlePrices } from "@/registry/new-york/blocks/paddle-client/lib/ho
 import { ExpressCheckoutDrawer } from "./express-checkout-drawer"
 import { Button } from "@/registry/new-york/ui/button"
 import type {
-  CheckoutCompleteData,
   CheckoutCustomer,
   Environments,
-} from "@/registry/new-york/blocks/paddle-client/lib/paddle-types"
+} from "@/registry/new-york/blocks/paddle-client/lib/paddle-sdk-types"
+import type { CheckoutCompleteData } from "@/registry/new-york/blocks/paddle-helpers/lib/paddle-types"
 import type { PricingSelectPlan } from "@/registry/new-york/blocks/pricing-select-cards/components/pricing-select-card"
 import { cn } from "@/lib/utils"
 

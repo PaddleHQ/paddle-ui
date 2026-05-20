@@ -4,7 +4,7 @@ import { useEffect, useCallback, useRef, useState } from "react"
 import type {
   PaddleEventData,
   CheckoutSettings,
-} from "@/registry/new-york/blocks/paddle-client/lib/paddle-types"
+} from "@/registry/new-york/blocks/paddle-client/lib/paddle-sdk-types"
 import { addPaddleEventListener } from "@/registry/new-york/blocks/paddle-client/lib/paddle-instance"
 import {
   useCheckout,

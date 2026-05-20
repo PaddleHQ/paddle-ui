@@ -16,8 +16,8 @@ import type {
   CheckoutEventsData,
   PaddleEventData,
   TimePeriod,
-  CheckoutCompleteData,
-} from "@/registry/new-york/blocks/paddle-client/lib/paddle-types"
+} from "@/registry/new-york/blocks/paddle-client/lib/paddle-sdk-types"
+import type { CheckoutCompleteData } from "@/registry/new-york/blocks/paddle-helpers/lib/paddle-types"
 
 // Local alias for the interval string union from Paddle's TimePeriod.
 // Uses the SDK's source of truth directly rather than a duplicated type.
