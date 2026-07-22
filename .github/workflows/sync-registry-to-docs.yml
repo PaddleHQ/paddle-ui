@@ -1,0 +1,85 @@
+name: Build and sync UI registry to docs
+
+# On merge to main (when the registry source changes) this rebuilds the shadcn
+# registry with `pnpm registry:build` and syncs the freshly-built public/r/*.json
+# into PaddleHQ/docs-developer-billing (served at developer.paddle.com/r/). On
+# pull_request it runs in DRY_RUN so the sync diff can be previewed first.
+#
+# One workflow (build + sync) rather than two: main here requires PR approval, so
+# a workflow can't push a rebuilt registry straight back to main to chain a
+# separate sync job. repo-file-sync-action reads the working tree, so building
+# in-run and syncing that output is the robust equivalent — and it doesn't rely
+# on paddle-ui's committed public/r being fresh.
+#
+# Prerequisite: GitHub App #923765 (paddle-repo-file-sync) must be installed on
+# docs-developer-billing (it already is — it syncs api-specs there today).
+on:
+  pull_request:
+    paths:
+      - "registry.json"
+      - "registry/**"
+      - "file-sync.yml"
+  push:
+    branches: [main]
+    paths:
+      - "registry.json"
+      - "registry/**"
+      - "file-sync.yml"
+  workflow_dispatch:
+
+# The cross-repo write uses the GitHub App token below, so this workflow's own
+# GITHUB_TOKEN only needs read access to check out this repo.
+permissions:
+  contents: read
+
+# Prevent two quick merges to main from racing duplicate sync PRs.
+concurrency:
+  group: sync-registry-to-docs-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: step-security/harden-runner@5ef0c079ce82195b2a36a210272d6b661572d83e # v2
+        with:
+          egress-policy: audit
+
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@41ff72655975bd51cab0327fa583b6e92b6d3061 # v4
+        with:
+          version: 9
+
+      - name: Setup Node.js
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: "22"
+          cache: "pnpm"
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Build registry
+        run: pnpm registry:build
+
+      - name: Create GitHub App token
+        id: app-token
+        uses: actions/create-github-app-token@67018539274d69449ef7c02e8e71183d1719ab42 # v2.1.4
+        with:
+          app-id: 923765
+          private-key: ${{ secrets.REPO_FILE_SYNC_PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
+          repositories: docs-developer-billing
+
+      - name: Sync registry to docs-developer-billing
+        uses: PaddleHQ/repo-file-sync-action@0d4a596affd1df3f6441321749c4c508afecc307 # v1.26.14
+        with:
+          GH_INSTALLATION_TOKEN: ${{ steps.app-token.outputs.token }}
+          CONFIG_PATH: file-sync.yml
+          DRY_RUN: ${{ github.ref == 'refs/heads/main' && 'false' || 'true' }}
+          PR_LABELS: |
+            norelease
+            origin:paddle-ui
+            bot

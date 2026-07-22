@@ -1,0 +1,8 @@
+# Config for PaddleHQ/repo-file-sync-action, used by
+# .github/workflows/sync-registry-to-docs.yml. The workflow runs
+# `pnpm registry:build` first, so the paths below are the freshly-built
+# working-tree files, not the committed copies. Trailing slashes sync
+# directory CONTENTS: public/r/<name>.json -> public/r/<name>.json.
+PaddleHQ/docs-developer-billing:
+  - source: public/r/
+    dest: public/r/
