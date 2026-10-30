@@ -111,10 +111,9 @@ export function mapSubscriptionToStatusData(
     ? parseAmount(recurringTransactionDetails.totals.discount, currencyCode)
     : 0
 
-  // Percentage discounts produce e.g. "-15%"; flat discounts leave description
-  // undefined so the component formats it from savingsAmount + currency.
-  const discountDescription =
-    discount?.type === "percentage" ? `-${discount.description}` : undefined
+  // Flat discounts stay undefined so the component formats savingsAmount. Never show
+  // discount.description: it is the seller's internal name, not a customer-facing label.
+  const discountDescription = discount?.type === "percentage" ? `-${discount.amount}%` : undefined
 
   const discountOutput: SubscriptionStatusData["discount"] =
     subscription.discount && discountAmount > 0
