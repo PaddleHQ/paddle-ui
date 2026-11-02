@@ -35,6 +35,8 @@ jobs:
 
       - run: pnpm format:check
 
+      - run: pnpm test
+
       # public/r is what `shadcn add` serves, so it must match the sources
       - name: Check registry build is up to date
         run: |
