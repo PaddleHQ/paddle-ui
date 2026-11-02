@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest"
+import { afterEach, beforeEach, describe, expect, it } from "vitest"
 import {
   formatBillingCycle,
   formatDate,
@@ -16,6 +16,24 @@ describe("formatDate", () => {
 
   it("respects the locale", () => {
     expect(formatDate("2024-01-15T12:00:00Z", "en-GB")).toBe("15 Jan 2024")
+  })
+
+  describe("in a runtime west of UTC", () => {
+    const originalTz = process.env.TZ
+    beforeEach(() => {
+      process.env.TZ = "America/New_York"
+    })
+    afterEach(() => {
+      process.env.TZ = originalTz
+    })
+
+    it("shows the UTC calendar date, not the local one", () => {
+      expect(formatDate("2025-02-01T00:00:00Z")).toBe("Feb 1, 2025")
+    })
+
+    it("uses an explicit timezone when given", () => {
+      expect(formatDate("2025-01-31T20:00:00Z", "en-US", "Asia/Tokyo")).toBe("Feb 1, 2025")
+    })
   })
 })
 

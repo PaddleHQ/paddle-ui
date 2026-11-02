@@ -4,17 +4,25 @@
  * @param isoString - ISO 8601 date string (e.g. "2024-01-15T00:00:00Z")
  * @param locale - Optional BCP 47 locale tag (e.g. "en-GB"). Defaults to "en-US" so SSR
  *   and client produce identical output (required for React hydration).
+ * @param timeZone - Optional IANA timezone (e.g. "Europe/London"). Defaults to "UTC" so the
+ *   date matches Paddle's billing date and SSR and client agree regardless of where they run.
  * @returns Formatted date string, e.g. "Jan 15, 2024"
  *
  * @example
  * formatDate("2024-01-15T00:00:00Z") // "Jan 15, 2024"
  * formatDate("2024-01-15T00:00:00Z", "en-GB") // "15 Jan 2024"
+ * formatDate("2024-01-15T00:00:00Z", "en-US", "America/New_York") // "Jan 14, 2024"
  */
-export function formatDate(isoString: string, locale: string = "en-US"): string {
+export function formatDate(
+  isoString: string,
+  locale: string = "en-US",
+  timeZone: string = "UTC"
+): string {
   return new Intl.DateTimeFormat(locale, {
     year: "numeric",
     month: "short",
     day: "numeric",
+    timeZone,
   }).format(new Date(isoString))
 }
 
