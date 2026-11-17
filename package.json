@@ -13,6 +13,7 @@
   "bugs": {
     "url": "https://github.com/PaddleHQ/paddle-ui/issues"
   },
+  "packageManager": "pnpm@12.13.0",
   "keywords": [
     "shadcn",
     "registry",
@@ -63,17 +64,5 @@
     "tailwindcss": "^4.1.11",
     "typescript": "^5.9.2",
     "typescript-eslint": "^8.0.0"
-  },
-  "pnpm": {
-    "overrides": {
-      "@types/react": "19.1.2",
-      "@types/react-dom": "19.1.2"
-    },
-    "onlyBuiltDependencies": [
-      "@tailwindcss/oxide",
-      "msw",
-      "sharp",
-      "unrs-resolver"
-    ]
   }
 }
