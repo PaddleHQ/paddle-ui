@@ -4,7 +4,7 @@ import reactHooks from "eslint-plugin-react-hooks";
 import prettier from "eslint-config-prettier";
 
 export default [
-  { ignores: ["node_modules/**", "public/r/**", "build/**", "dist/**"] },
+  { ignores: ["node_modules/**", "public/r/**", "build/**", "dist/**", ".next/**", "next-env.d.ts"] },
   js.configs.recommended,
   ...tseslint.configs.recommended,
   {
