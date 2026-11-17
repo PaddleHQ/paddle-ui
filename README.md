@@ -81,6 +81,10 @@ Some components require price IDs. You can find them in your Paddle dashboard un
 
 Check the documentation for each component for a demo and a list of props.
 
+## Contributing
+
+To preview every component locally with fixture data in light and dark mode, run `pnpm install && pnpm dev`. See [CONTRIBUTING.md](CONTRIBUTING.md) for setting up the Paddle.js-connected blocks and testing installs from a local registry build.
+
 ## Get help
 
 For help with these components, open an issue in this repository.
