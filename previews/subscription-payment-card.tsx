@@ -37,3 +37,21 @@ export default function SubscriptionPaymentCardPreview() {
     </div>
   )
 }
+
+export function Thumbnail() {
+  return (
+    <div className="mx-auto max-w-md">
+      <SubscriptionPaymentCard
+        nextPayment={{ amount: 34.8, currency: "USD", date: daysFromNow(18) }}
+        paymentMethod={{
+          type: "card",
+          cardBrand: "visa",
+          last4: "4242",
+          expiryMonth: 8,
+          expiryYear: 2029,
+        }}
+        updatePaymentMethodUrl={portalUrl}
+      />
+    </div>
+  )
+}

@@ -81,3 +81,7 @@ export default function PlanChangeBreakdownPreview() {
     </>
   )
 }
+
+export function Thumbnail() {
+  return <PlanChangeBreakdown breakdown={upgrade} collectionMode="automatic" />
+}

@@ -79,3 +79,16 @@ export default function PricingSelectCardsPreview() {
     </>
   )
 }
+
+export function Thumbnail() {
+  const [value, setValue] = React.useState("pri_annual")
+  return (
+    <div className="mx-auto max-w-md">
+      <PricingSelectCardGroup value={value} onValueChange={setValue}>
+        {plans.map((plan) => (
+          <PricingSelectCardStacked key={plan.priceId} {...plan} />
+        ))}
+      </PricingSelectCardGroup>
+    </div>
+  )
+}

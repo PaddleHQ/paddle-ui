@@ -1,0 +1,47 @@
+@import "../registry/new-york/globals.css";
+
+/*
+ * Paddle brand palette for the preview app's own chrome (header, page, card frames).
+ * Values from developer.paddle.com. Component stages keep the registry tokens from
+ * globals.css, so previews show exactly what consumers install.
+ */
+@theme inline {
+  --color-brand-canvas: var(--brand-canvas);
+  --color-brand-surface: var(--brand-surface);
+  --color-brand-ink: var(--brand-ink);
+  --color-brand-muted: var(--brand-muted);
+  --color-brand-line: var(--brand-line);
+  --color-brand-highlight: var(--brand-highlight);
+  --color-brand-highlight-ink: var(--brand-highlight-ink);
+  --font-brand-mono: var(--font-space-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+:root {
+  --brand-canvas: #f5f2ed;
+  --brand-surface: #fbf9f5;
+  --brand-ink: #1c1a15;
+  --brand-muted: #68624f;
+  --brand-line: #ebe7df;
+  --brand-highlight: #ffff63;
+  --brand-highlight-ink: #1c1a15;
+}
+
+.dark {
+  --brand-canvas: #1c1a15;
+  --brand-surface: #272728;
+  --brand-ink: #fbf9f5;
+  --brand-muted: #a99f88;
+  --brand-line: #3b3a38;
+}
+
+/* Dotted stage behind live components, like a design canvas. */
+.preview-stage {
+  background-color: var(--background);
+  background-image: radial-gradient(var(--brand-line) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+::selection {
+  background: var(--brand-highlight);
+  color: var(--brand-highlight-ink);
+}

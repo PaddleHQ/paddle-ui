@@ -63,3 +63,11 @@ export default function CheckoutSummaryPreview() {
     </>
   )
 }
+
+export function Thumbnail() {
+  return (
+    <div className="mx-auto max-w-md">
+      <CheckoutSummary summary={multiItemWithDiscount} />
+    </div>
+  )
+}

@@ -11,7 +11,7 @@ pnpm install
 pnpm dev
 ```
 
-Open [localhost:3000](http://localhost:3000) for a page per registry item, rendered with fixture data from [`previews/`](previews/). When you add an item to `registry.json`, add a preview and register it in [`previews/index.ts`](previews/index.ts).
+Open [localhost:3000](http://localhost:3000) for a page per registry item, rendered with fixture data from [`previews/`](previews/). When you add an item to `registry.json`, add a preview and register it in [`previews/index.ts`](previews/index.ts). The default export is the full page of states; export a `Thumbnail` with one representative state for the gallery card. Use the theme toggle in the header to check light and dark.
 
 `express-checkout`, `inline-checkout` and `pricing-display` load Paddle.js. To preview them, copy `.env.example` to `.env.local` and set a sandbox client token and `NEXT_PUBLIC_PREVIEW_PRICE_IDS`.
 

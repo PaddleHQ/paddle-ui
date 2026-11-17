@@ -73,3 +73,19 @@ export default function PricingCardsPreview() {
     </>
   )
 }
+
+export function Thumbnail() {
+  return (
+    <PricingTierCardGroup>
+      {tiers.map((tier) => (
+        <PricingTierCard
+          key={tier.name}
+          {...tier}
+          ctaLabel="Choose plan"
+          isSelected={tier.name === "Pro"}
+          onSelect={() => {}}
+        />
+      ))}
+    </PricingTierCardGroup>
+  )
+}

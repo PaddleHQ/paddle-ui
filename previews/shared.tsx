@@ -10,12 +10,15 @@ export function Example({
   children: React.ReactNode
 }) {
   return (
-    <section className="flex flex-col gap-4">
+    <section className="flex flex-col gap-3">
       <div>
-        <h2 className="text-lg font-medium">{title}</h2>
-        {description && <p className="text-sm text-muted-foreground">{description}</p>}
+        <h2 className="font-medium">{title}</h2>
+        {description && <p className="text-sm text-brand-muted">{description}</p>}
       </div>
-      <div className="rounded-lg border border-dashed p-6">{children}</div>
+      {/* Stage uses the registry tokens so components render as consumers will see them. */}
+      <div className="preview-stage rounded-2xl border border-brand-line p-6 text-foreground sm:p-8">
+        {children}
+      </div>
     </section>
   )
 }

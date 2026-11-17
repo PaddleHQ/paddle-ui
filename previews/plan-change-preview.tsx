@@ -93,3 +93,11 @@ export default function PlanChangePreviewPreview() {
     </div>
   )
 }
+
+export function Thumbnail() {
+  return (
+    <div className="mx-auto max-w-lg">
+      <PlanChangePreview preview={upgrade} prorationBillingMode="prorated_immediately" />
+    </div>
+  )
+}

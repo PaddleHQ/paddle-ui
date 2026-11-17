@@ -57,3 +57,13 @@ export default function SubscriptionAlertPreview() {
     </>
   )
 }
+
+export function Thumbnail() {
+  return (
+    <div className="flex flex-col gap-3">
+      {[cases[0], cases[2], cases[6]].map(({ title, data }) => (
+        <SubscriptionAlert key={title} subscription={data} />
+      ))}
+    </div>
+  )
+}

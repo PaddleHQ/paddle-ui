@@ -104,3 +104,16 @@ export default function SubscriptionStatusCardPreview() {
     </div>
   )
 }
+
+export function Thumbnail() {
+  return (
+    <div className="mx-auto max-w-md">
+      <SubscriptionStatusCard
+        subscription={base}
+        onChangePlan={noop}
+        onUpdatePaymentMethod={noop}
+        onManageSubscription={noop}
+      />
+    </div>
+  )
+}

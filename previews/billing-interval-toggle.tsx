@@ -27,3 +27,10 @@ export default function BillingIntervalTogglePreview() {
     </>
   )
 }
+
+export function Thumbnail() {
+  const [value, setValue] = React.useState("year")
+  return (
+    <BillingIntervalToggle intervals={["month", "year"]} value={value} onValueChange={setValue} />
+  )
+}
