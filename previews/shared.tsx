@@ -1,4 +1,5 @@
 import type { Environments } from "@/registry/new-york/blocks/paddle-client/lib/paddle-sdk-types"
+import { useHydrated } from "@/app/theme"
 
 export function Example({
   title,
@@ -51,12 +52,15 @@ export const paddleEnv = {
 }
 
 export function RequiresPaddle({ children }: { children: React.ReactNode }) {
+  const hydrated = useHydrated()
   const missing = [
     !paddleEnv.clientToken && "NEXT_PUBLIC_PADDLE_CLIENT_TOKEN",
     paddleEnv.priceIds.length === 0 && "NEXT_PUBLIC_PREVIEW_PRICE_IDS",
   ].filter(Boolean)
 
-  if (missing.length === 0) return <>{children}</>
+  // Paddle checkout reads `theme` once when it opens; mounting during hydration would
+  // open it in light mode and then reopen it in dark.
+  if (missing.length === 0) return hydrated ? <>{children}</> : null
 
   return (
     <div className="rounded-lg border border-warning/40 bg-warning/10 p-4 text-sm">

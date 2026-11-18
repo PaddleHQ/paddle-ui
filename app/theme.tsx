@@ -41,6 +41,20 @@ export function useResolvedTheme(): "light" | "dark" {
   )
 }
 
+const subscribeNever = () => () => {}
+
+/**
+ * False during server render and hydration, true after. `useResolvedTheme` reports
+ * "light" until hydration ends, so gate anything that reads the theme once on mount.
+ */
+export function useHydrated(): boolean {
+  return React.useSyncExternalStore(
+    subscribeNever,
+    () => true,
+    () => false
+  )
+}
+
 /** Single light/dark toggle, like the docs header (Header.astro theme button). */
 export function ThemeToggle() {
   const theme = useResolvedTheme()
