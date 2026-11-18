@@ -26,7 +26,7 @@ function ItemCard({ item }: { item: RegistryItem }) {
   const entry = previews[item.name]
   return (
     // Stretched link: thumbnails can contain their own <a>, so the card can't be one.
-    <li className="group relative flex flex-col overflow-hidden rounded-2xl border border-brand-line bg-brand-surface transition-all focus-within:ring-2 focus-within:ring-brand-ink hover:-translate-y-0.5 hover:border-brand-muted/40 hover:shadow-lg hover:shadow-brand-ink/5">
+    <li className="group relative flex flex-col overflow-hidden rounded-lg border border-brand-line bg-brand-surface transition-all focus-within:ring-2 focus-within:ring-brand-ink hover:-translate-y-0.5 hover:border-brand-muted/40 hover:shadow-brand-key">
       {entry ? (
         <ThumbnailFrame entry={entry} />
       ) : (
@@ -77,7 +77,7 @@ export default function Home() {
           Pricing, checkout, and subscription components, rendered here with fixture data. Open one
           to see every state.
         </p>
-        <pre className="mt-8 inline-block max-w-full overflow-x-auto rounded-xl bg-brand-ink px-4 py-3 font-brand-mono text-sm text-brand-surface">
+        <pre className="mt-8 inline-block max-w-full overflow-x-auto rounded-lg bg-brand-ink px-4 py-3 font-brand-mono text-sm text-brand-surface">
           <span className="text-brand-highlight">$</span> pnpm dlx shadcn@latest registry add
           @paddle
         </pre>

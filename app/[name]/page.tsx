@@ -33,7 +33,7 @@ export default async function PreviewPage({ params }: { params: Promise<{ name: 
         </div>
         <p className="mt-3 max-w-3xl text-brand-muted">{item.description}</p>
         <div className="mt-6 flex flex-col gap-2">
-          <pre className="max-w-full self-start overflow-x-auto rounded-xl bg-brand-ink px-4 py-3 font-brand-mono text-sm text-brand-surface">
+          <pre className="max-w-full self-start overflow-x-auto rounded-lg bg-brand-ink px-4 py-3 font-brand-mono text-sm text-brand-surface">
             <span className="text-brand-highlight">$</span> pnpm dlx shadcn@latest add @paddle/
             {item.name}
           </pre>

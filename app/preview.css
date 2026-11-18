@@ -15,6 +15,7 @@
   --color-brand-highlight-ink: var(--brand-highlight-ink);
   --color-brand-accent: var(--brand-accent);
   --color-brand-subtle: var(--brand-subtle);
+  --shadow-brand-key: var(--brand-shadow-key);
   --font-brand-mono: var(--font-space-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
@@ -29,6 +30,8 @@
   --brand-subtle: #f5f2ed; /* --muted: neutral-100 (caption bars) */
   --brand-highlight: #ffd400; /* --color-paddle-yellow, used for ::selection */
   --brand-highlight-ink: #1c1a15; /* --color-paddle-black */
+  /* --shadow-key (line 324) */
+  --brand-shadow-key: 0 1px 3px rgba(28, 26, 21, 0.08), 0 1px 2px rgba(28, 26, 21, 0.04);
 }
 
 .dark {
@@ -40,6 +43,8 @@
   --brand-line: oklch(1 0 0 / 10%);
   --brand-accent: #272728; /* neutral-500 */
   --brand-subtle: #272728; /* neutral-500 */
+  /* --shadow-key (line 649) */
+  --brand-shadow-key: 0 1px 3px rgba(0, 0, 0, 0.24), 0 1px 2px rgba(0, 0, 0, 0.16);
 }
 
 /* Dotted stage behind live components, like a design canvas. */

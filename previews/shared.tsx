@@ -16,7 +16,7 @@ export function Example({
         {description && <p className="text-sm text-brand-muted">{description}</p>}
       </div>
       {/* Stage uses the registry tokens so components render as consumers will see them. */}
-      <div className="preview-stage rounded-2xl border border-brand-line p-6 text-foreground sm:p-8">
+      <div className="preview-stage rounded-lg border border-brand-line p-6 text-foreground sm:p-8">
         {children}
       </div>
     </section>
