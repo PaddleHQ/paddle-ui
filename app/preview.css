@@ -13,25 +13,33 @@
   --color-brand-line: var(--brand-line);
   --color-brand-highlight: var(--brand-highlight);
   --color-brand-highlight-ink: var(--brand-highlight-ink);
+  --color-brand-accent: var(--brand-accent);
+  --color-brand-subtle: var(--brand-subtle);
   --font-brand-mono: var(--font-space-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
 :root {
-  --brand-canvas: #f5f2ed;
-  --brand-surface: #fbf9f5;
-  --brand-ink: #1c1a15;
-  --brand-muted: #68624f;
-  --brand-line: #ebe7df;
-  --brand-highlight: #ffff63;
-  --brand-highlight-ink: #1c1a15;
+  /* docs-developer-billing src/styles/global.css :root semantic tokens (lines 300-319) */
+  --brand-canvas: #fbfaf9; /* --background: neutral-025 */
+  --brand-surface: #fbf9f5; /* --card: neutral-050 */
+  --brand-ink: #1c1a15; /* --foreground: neutral-600 */
+  --brand-muted: #7e765d; /* --muted-foreground: neutral-300 */
+  --brand-line: #ebe7df; /* --border: neutral-150 */
+  --brand-accent: #f5f2ed; /* --accent: neutral-100 (hover fill) */
+  --brand-subtle: #f5f2ed; /* --muted: neutral-100 (caption bars) */
+  --brand-highlight: #ffd400; /* --color-paddle-yellow, used for ::selection */
+  --brand-highlight-ink: #1c1a15; /* --color-paddle-black */
 }
 
 .dark {
-  --brand-canvas: #1c1a15;
-  --brand-surface: #272728;
-  --brand-ink: #fbf9f5;
-  --brand-muted: #a99f88;
-  --brand-line: #3b3a38;
+  /* docs-developer-billing src/styles/global.css .dark semantic tokens (lines 619-638) */
+  --brand-canvas: #1c1a15; /* neutral-600 */
+  --brand-surface: #272728; /* neutral-500 */
+  --brand-ink: #fbf9f5; /* neutral-050 */
+  --brand-muted: #d6cbb6; /* neutral-200 */
+  --brand-line: oklch(1 0 0 / 10%);
+  --brand-accent: #272728; /* neutral-500 */
+  --brand-subtle: #272728; /* neutral-500 */
 }
 
 /* Dotted stage behind live components, like a design canvas. */
