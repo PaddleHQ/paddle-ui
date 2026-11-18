@@ -17,7 +17,7 @@ export default async function PreviewPage({ params }: { params: Promise<{ name: 
   const { Preview } = entry
 
   return (
-    <main className="px-4 pb-20 sm:px-6 lg:px-8">
+    <main className="px-6 pb-20">
       <section className="border-b border-brand-line py-10 sm:py-14">
         <Link
           href="/"

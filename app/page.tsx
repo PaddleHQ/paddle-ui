@@ -64,7 +64,7 @@ export default function Home() {
   }
 
   return (
-    <main className="px-4 pb-20 sm:px-6 lg:px-8">
+    <main className="px-6 pb-20">
       <section className="py-14 sm:py-20">
         <p className="font-brand-mono text-xs uppercase tracking-widest text-brand-muted">
           shadcn/ui registry · {items.length} components
