@@ -24,35 +24,33 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
       <body className="min-h-screen bg-brand-canvas text-brand-ink antialiased">
-        <header className="sticky top-0 z-40 border-b border-brand-line bg-brand-canvas/85 backdrop-blur">
-          <div className="flex h-16 items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
-            <Link href="/" className="flex items-center gap-3" aria-label="Paddle UI home">
-              <PaddleLogo className="h-6 w-auto" />
-              <span className="h-5 w-px bg-brand-line" />
-              <span className="font-brand-mono text-sm uppercase tracking-wider">UI</span>
-              <span className="hidden rounded-full bg-brand-highlight px-2 py-0.5 font-brand-mono text-[11px] uppercase tracking-wider text-brand-highlight-ink sm:inline">
-                Preview
-              </span>
-            </Link>
-            <div className="flex items-center gap-2">
-              <a
-                href="https://developer.paddle.com/sdks/components/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hidden rounded-md px-3 py-1.5 text-sm text-brand-muted transition-colors hover:text-brand-ink md:inline"
-              >
-                Docs
-              </a>
-              <a
-                href="https://github.com/PaddleHQ/paddle-ui"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hidden rounded-md px-3 py-1.5 text-sm text-brand-muted transition-colors hover:text-brand-ink md:inline"
-              >
-                GitHub
-              </a>
-              <ThemeToggle />
-            </div>
+        {/* Mirrors the docs header: docs-developer-billing src/components/astro/Header.astro */}
+        <header className="sticky top-0 z-40 flex h-16 items-center justify-between gap-4 border-b border-brand-line bg-brand-canvas px-6">
+          <Link href="/" className="flex items-center gap-2.5" aria-label="Paddle UI home">
+            <PaddleLogo className="h-6 w-auto shrink-0" />
+            <span className="text-lg font-medium">UI</span>
+            <span className="hidden rounded-md border border-brand-line px-2 py-0.5 font-brand-mono text-[11px] uppercase tracking-wider text-brand-muted sm:inline">
+              Preview
+            </span>
+          </Link>
+          <div className="flex items-center gap-1 md:gap-2">
+            <a
+              href="https://developer.paddle.com/sdks/components/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden h-9 items-center rounded-md px-4 text-sm font-medium transition-colors hover:bg-brand-accent md:inline-flex"
+            >
+              Docs
+            </a>
+            <a
+              href="https://github.com/PaddleHQ/paddle-ui"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden h-9 items-center rounded-md px-4 text-sm font-medium transition-colors hover:bg-brand-accent md:inline-flex"
+            >
+              GitHub
+            </a>
+            <ThemeToggle />
           </div>
         </header>
         {children}

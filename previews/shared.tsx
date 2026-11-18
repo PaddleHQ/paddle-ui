@@ -15,9 +15,13 @@ export function Example({
         <h2 className="font-medium">{title}</h2>
         {description && <p className="text-sm text-brand-muted">{description}</p>}
       </div>
-      {/* Stage uses the registry tokens so components render as consumers will see them. */}
-      <div className="preview-stage rounded-2xl border border-brand-line p-6 text-foreground sm:p-8">
-        {children}
+      {/* Frame mirrors the docs demo frame (paddle-ui-demos/_layout.tsx). The stage inside
+          uses the registry tokens so components render as consumers will see them. */}
+      <div className="overflow-hidden rounded-lg border border-brand-line">
+        <div className="border-b border-brand-line bg-brand-subtle/30 px-4 py-2 text-xs font-medium uppercase tracking-wide text-brand-muted">
+          Preview
+        </div>
+        <div className="preview-stage p-6 text-foreground">{children}</div>
       </div>
     </section>
   )

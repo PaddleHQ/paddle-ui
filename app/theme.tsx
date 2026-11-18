@@ -1,8 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Monitor, Moon, Sun } from "lucide-react"
-import { cn } from "@/lib/utils"
+import { Moon, Sun } from "lucide-react"
 
 type ThemePreference = "light" | "dark" | "system"
 
@@ -42,57 +41,41 @@ export function useResolvedTheme(): "light" | "dark" {
   )
 }
 
-const options: { value: ThemePreference; label: string; icon: React.ElementType }[] = [
-  { value: "light", label: "Light", icon: Sun },
-  { value: "dark", label: "Dark", icon: Moon },
-  { value: "system", label: "System", icon: Monitor },
-]
-
+/** Single light/dark toggle, like the docs header (Header.astro theme button). */
 export function ThemeToggle() {
-  const [preference, setPreference] = React.useState<ThemePreference>("system")
+  const theme = useResolvedTheme()
 
-  React.useEffect(() => setPreference(readPreference()), [])
-
+  // Until a choice is stored, keep following the OS setting.
   React.useEffect(() => {
-    applyPreference(preference)
-    if (preference !== "system") return
+    if (readPreference() !== "system") return
     const media = matchMedia(DARK_QUERY)
-    const onChange = () => applyPreference("system")
+    const onChange = () => {
+      if (readPreference() === "system") applyPreference("system")
+    }
     media.addEventListener("change", onChange)
     return () => media.removeEventListener("change", onChange)
-  }, [preference])
+  }, [])
 
-  function select(value: ThemePreference) {
-    setPreference(value)
+  function toggle() {
+    const next: ThemePreference = theme === "dark" ? "light" : "dark"
+    applyPreference(next)
     try {
-      localStorage.setItem(STORAGE_KEY, value)
+      localStorage.setItem(STORAGE_KEY, next)
     } catch {
       // Storage blocked: the choice still applies for this page view.
     }
   }
 
   return (
-    <div
-      role="radiogroup"
-      aria-label="Theme"
-      className="flex rounded-full border border-brand-line bg-brand-surface p-0.5"
+    <button
+      type="button"
+      onClick={toggle}
+      aria-label="Toggle theme"
+      title="Toggle theme"
+      className="inline-flex size-9 items-center justify-center rounded-md transition-colors hover:bg-brand-accent"
     >
-      {options.map(({ value, label, icon: Icon }) => (
-        <button
-          key={value}
-          role="radio"
-          aria-checked={preference === value}
-          aria-label={label}
-          title={label}
-          onClick={() => select(value)}
-          className={cn(
-            "rounded-full p-1.5 text-brand-muted transition-colors hover:text-brand-ink",
-            preference === value && "bg-brand-ink text-brand-surface hover:text-brand-surface"
-          )}
-        >
-          <Icon className="size-4" />
-        </button>
-      ))}
-    </div>
+      <Sun className="size-4 dark:hidden" />
+      <Moon className="hidden size-4 dark:block" />
+    </button>
   )
 }
